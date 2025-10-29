@@ -15,6 +15,8 @@ int leftArr[MAX_NODES];
 int rightArr[MAX_NODES];
 char charArr[MAX_NODES];
 
+//test
+
 // Function prototypes
 void buildFrequencyTable(int freq[], const string& filename);
 int createLeafNodes(int freq[]);
