@@ -120,7 +120,7 @@ int buildEncodingTree(int nextFree) {
         rightArr[nextFree] = right;
 
         // Tracing, remove later
-        cout << nextFree << endl;
+        cout << nextFree << " " << weightArr[nextFree] << " Left: " << leftArr[nextFree] << " Right: " << rightArr[nextFree] << endl;
 
 
         heap.push(nextFree, weightArr);
@@ -136,6 +136,28 @@ void generateCodes(int root, string codes[]) {
     // Use stack<pair<int, string>> to simulate DFS traversal.
     // Left edge adds '0', right edge adds '1'.
     // Record code when a leaf node is reached.
+
+    stack<pair<int, string>> stack;
+    string curr_code;
+    stack.push({root, curr_code});
+
+    int i = 0;
+    while (!stack.empty()) {
+        int curr_node = stack.top().first;
+        curr_code = stack.top().second;
+        stack.pop();
+
+        cout << curr_node << ": left =" << leftArr[curr_node] << " right =" << rightArr[curr_node] << " char =" << charArr[curr_node] << endl;
+
+        if (leftArr[curr_node] == -1 && rightArr[curr_node] == -1) {
+            codes[charArr[curr_node] - 'a'] = curr_code;
+        } else {
+            stack.push({leftArr[curr_node],curr_code + "0"});
+            stack.push({rightArr[curr_node],curr_code + "1"});
+        }
+    }
+
+
 }
 
 // Step 5: Print table and encoded message

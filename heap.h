@@ -20,7 +20,10 @@ struct MinHeap {
         // Check if full
         if (size >= 64) return;
 
+        // Inserts index at the end
         data[size] = idx;
+
+        // Fixes heap
         upheap(size, weightArr);
         size++;
 
@@ -31,11 +34,15 @@ struct MinHeap {
         // TODO: remove and return smallest index
         // Replace root with last element, then call downheap()
 
+        // Ensure heap not empty
         if (size == 0) return -1;
 
+        // Replaces root with last element
         int popped = data[0];
         size--;
         data[0] = data[size];
+
+        // Fixes heap
         downheap(0, weightArr);
 
         return popped;
