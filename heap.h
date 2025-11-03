@@ -24,6 +24,7 @@ struct MinHeap {
         upheap(size, weightArr);
         size++;
 
+
     }
 
     int pop(int weightArr[]) {
