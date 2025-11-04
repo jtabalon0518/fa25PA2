@@ -150,7 +150,8 @@ void generateCodes(int root, string codes[]) {
         curr_code = stack.top().second;
         stack.pop();
 
-        cout << curr_node << ": left =" << leftArr[curr_node] << " right =" << rightArr[curr_node] << " char =" << charArr[curr_node] << endl;
+        // Tracing remove
+        // cout << curr_node << ": left =" << leftArr[curr_node] << " right =" << rightArr[curr_node] << " char =" << charArr[curr_node] << endl;
 
         // If leftArr and rightArr contain -1, it is a leaf node so we record the code in codes
         if (leftArr[curr_node] == -1 && rightArr[curr_node] == -1) {

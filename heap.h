@@ -40,6 +40,8 @@ struct MinHeap {
         // Replaces root with last element
         int popped = data[0];
         size--;
+
+        // This doesn't clear the last element, but its already out of our current "size" so it'll never be accessed in other functions
         data[0] = data[size];
 
         // Fixes heap
@@ -59,7 +61,7 @@ struct MinHeap {
             data[pos] = data[parent];
             data[parent] = temp;
 
-
+            // Moving to the next parent
             pos = parent;
             parent = (pos - 1) / 2;
         }
@@ -73,6 +75,7 @@ struct MinHeap {
             int right = pos * 2 + 2;
             int smallest = pos;
 
+            // Checking to see which of the parent and its children are the smallest
             if (left < size && weightArr[data[left]] < weightArr[data[smallest]]) {
                 smallest = left;
             }
@@ -81,6 +84,7 @@ struct MinHeap {
                 smallest = right;
             }
 
+            // If the smallest is not the parent, swap with the smallest child
             if (smallest != pos) {
                 int temp = data[smallest];
                 data[smallest] = data[pos];
