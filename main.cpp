@@ -139,6 +139,12 @@ void generateCodes(int root, string codes[]) {
     // Left edge adds '0', right edge adds '1'.
     // Record code when a leaf node is reached.
 
+    // Single character edge case
+    if (leftArr[root] == -1 && rightArr[root] == -1) {
+        codes[charArr[root] - 'a'] = "0";
+        return;
+    }
+
     stack<pair<int, string>> stack;
     string curr_code;
     // Pushing our root index (from buildEncodingTree) and an empty string for our code
